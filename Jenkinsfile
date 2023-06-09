@@ -6,12 +6,7 @@ pipeline {
   stages {
     stage('Clone Git Repo') {
       steps {
-                git(
-                    url: "https://github.com/MohamedM97/Jenkins-Terraform.git",
-                    branch: "main",
-                    changelog: true,
-                    poll: true
-                )
+            checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/MohamedM97/jenkins-docker']])
             }
         }
     stage("terraform init"){
